@@ -19,7 +19,7 @@ class BookSerializer(serializers.Serializer):
         instance.name = validated_data.get('name', instance.name)
         instance.description = validated_data.get('description', instance.description)
         instance.release_date = validated_data.get('release_date', instance.release_date)
-        instance.book_genre = validated_data.get('book_genre', instance.toy_category)
+        instance.book_genre = validated_data.get('book_genre', instance.book_genre)
 #        instance.author_name = validated_data.get('author_name', instance.author.name)
         instance.save()
         return instance
