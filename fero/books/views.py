@@ -7,10 +7,12 @@ from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
 from rest_framework import status
 from books.models import Book
+from rest_framework.decorators import api_view
 from books.serializers import BookSerializer
 from django.http import HttpResponse, JsonResponse
 
 @csrf_exempt
+@api_view(['GET','POST'])
 def book_list(request):
     if request.method == 'GET':
         books = Book.objects.all()
@@ -24,6 +26,7 @@ def book_list(request):
             return JSONResponse(book_serializer.data,status=status.HTTP_201_CREATED)
         return JSONResponse(book_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+@api_view(['GET','PUT','DELETE'])
 @csrf_exempt
 def book_detail(request, pk):
     try:
