@@ -1,6 +1,10 @@
 from django.conf.urls import url
 from drones import views
 urlpatterns = [
+    url(r'^vehicle-categories/$',views.DroneCategoryList.as_view(),name=views.DroneCategoryList.name),
+    url(r'^vehicle-categories/(?P<pk>[0-9]+)$',views.DroneCategoryDetail.as_view(),name=views.DroneCategoryDetail.name),
+    url(r'^vehicles/$',views.DroneList.as_view(),name=views.DroneList.name),
+    url(r'^vehicles/(?P<pk>[0-9]+)$',views.DroneDetail.as_view(),name=views.DroneDetail.name),
     url(r'^drone-categories/$',views.DroneCategoryList.as_view(),name=views.DroneCategoryList.name),
     url(r'^drone-categories/(?P<pk>[0-9]+)$',views.DroneCategoryDetail.as_view(),name=views.DroneCategoryDetail.name),
     url(r'^drones/$',views.DroneList.as_view(),name=views.DroneList.name),
